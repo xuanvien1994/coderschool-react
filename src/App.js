@@ -18,13 +18,13 @@ class App extends Component {
           id: 0,
           text: "Hello",
           liked: true,
-          timestamp: '2017-01-01T00:00:00.000Z'
+          timestamp: '02 02 2018'
         },
         {
           id: 1,
           text: "World",
           liked: false,
-          timestamp: 'Aug 29, 2014'
+          timestamp: '01 01 2018'
         }
       ]
     }
@@ -96,6 +96,7 @@ class App extends Component {
                       handleRepost={this.handleRepostTweet.bind(this)}
               />
             ))}
+              <br />
         </div>
       </div>
     );
