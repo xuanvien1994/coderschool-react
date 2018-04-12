@@ -13,32 +13,27 @@ TimeAgo.locale(en)
 class App extends Component {
   constructor(props){
     super(props);
+
+     var xhttp = new XMLHttpRequest();
+    xhttp.open("GET", "https://my.api.mockaroo.com/tweetsapischema.json?key=04840390", false);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send();
+    var response = JSON.parse(xhttp.responseText);
+
     this.state = {
-      tweets: [
-        {
-          id: 0,
-          text: "Hello",
-          liked: true,
-          image: '/image.jpg',
-          timestamp: '2018-04-12T03:56:25.729Z'
-        },
-        {
-          id: 1,
-          text: "World",
-          liked: false,
-          image: '/image.jpg',
-          timestamp: '2018-04-12T03:52:25.729Z'
-        }
-      ]
+      tweets: [ {}]
     }
+     this.state.tweets = (response);
   }
+
   handleTweet (tweetText){
+    var options = {    weekday: "long", year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" ,second: "2-digit"}; 
     var id = (this.state.tweets == "") ? 0 : this.state.tweets[this.state.tweets.length-1].id+ 1 ;
     let tweetObj = {
       id: id,
       text: tweetText,
       liked: false,
-      timestamp: Date.now()
+      timestamp:  new Date(Date.now()).toLocaleDateString("en-US",options)
     }
 
     this.setState({
@@ -73,12 +68,13 @@ class App extends Component {
     })
   }
   handleRepostTweet(tweet) {
+    var options = {    weekday: "long", year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit",second: "2-digit"  }; 
     var id = this.state.tweets[this.state.tweets.length-1].id + 1;
     var RepostTweet =[ {
         id: id,
         text: tweet.text,
         liked: false,
-        timestamp: Date.now()}]
+        timestamp: new Date(Date.now()).toLocaleDateString("en-US", options)}]
     this.setState({
       tweets: this.state.tweets.concat(RepostTweet)
     });
@@ -123,20 +119,29 @@ class App extends Component {
         </div>
 
         </div>
-        <div>
-          <TweetBox  class="input" type="text" prompt="What's your status?" onTweet={this.handleTweet.bind(this)}/>
-        </div>  
-        <div>
-          { this.state.tweets.map( (tweet) => (
-              <Tweet  key={tweet.id}
-                      tweet={tweet} 
-                      handleLike={this.handleLike.bind(this)} 
-                      handleDeleteTweet={this.handleDeleteTweet.bind(this)}
-                      handleRepost={this.handleRepostTweet.bind(this)}
-              />
-            ))}
-              <br />
+        <div class="tweet">
+          <div class="Grid Grid--withGutter">
+            <div class="Grid-cell u-size1of3 u-lg-size1of4"></div>
+            <div class="Grid-cell u-lg-size2of3">
+              <div class="stream-container"></div>
+              { this.state.tweets.map( (tweet) => (
+                  <Tweet  key={tweet.id}
+                          tweet={tweet} 
+                          handleLike={this.handleLike.bind(this)} 
+                          handleDeleteTweet={this.handleDeleteTweet.bind(this)}
+                          handleRepost={this.handleRepostTweet.bind(this)}
+                  />
+                ))}
+                  <br />
+            </div>
+          </div>
         </div>
+        <div  class="Grid Grid--withGutter">
+        <div class="Grid-cell u-size1of3 u-lg-size1of4"></div>
+         <div class="Grid-cell u-lg-size2of3">
+          <TweetBox  class="input" type="text" prompt="What's your status?" onTweet={this.handleTweet.bind(this)}/>
+          </div>
+        </div>  
       </div>
     );
   }

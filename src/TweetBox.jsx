@@ -18,9 +18,9 @@ class TweetBox extends Component {
   render() {
     return (
     <div>
-    	<input type="text"  placeholder={this.props.prompt} 	onChange={(e) => this.handleChange(e.target.value)} />
+    	<input class="textarea" type="text"  placeholder={this.props.prompt} 	onChange={(e) => this.handleChange(e.target.value)} />
     	<p>{this.state.charsRemaining}</p>
-    	<button onClick={() => this.props.onTweet(this.state.text)} disabled={this.state.charsRemaining < 0}>Tweet</button>
+    	<button class="button is-dark" onClick={() => this.props.onTweet(this.state.text)} disabled={this.state.charsRemaining < 0}>Tweet</button>
     </div>
     );
   }
