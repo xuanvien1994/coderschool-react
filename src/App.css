@@ -21,7 +21,179 @@
 .App-intro {
   font-size: large;
 }
-
+.AppContainer{
+    height: 100%;
+    position: relative;
+    max-width: 1190px;
+    margin: 0 auto;
+}
+.ProfileCanopy-avatar{
+    bottom: -87px;
+    left: 10px;
+    position: absolute;
+    transition: bottom .3s;
+    z-index: 3;
+}
+.ProfileAvatar{
+    background: #fff;
+    border: 5px solid #fff;
+    border-radius: 50%;
+    height: 200px;
+    position: relative;
+    width: 200px;
+}
+.ProfileAvatar-container{
+      outline: 0;
+      display: block!important;
+}
+a>img:first-child:last-child{
+      transition: box-shadow .15s ease-in-out;
+}
+.ProfileCanopy-navBar{
+      background-color: #fff;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 60px;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.25);
+}
+.ProfileAvatar-image{
+      border-radius: 50%;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}.Grid--withGutter{
+      margin: 0 -5px;
+      display: block;
+    font-size: 0;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+.Grid--withGutter>.Grid-cell{
+      padding: 0 5px;
+}
+.Grid-cell{
+      box-sizing: border-box;
+    display: inline-block;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    vertical-align: top;
+    width: 100%;
+}
+.ProfileCanopy-card{
+      -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 60px;
+    margin-right: -10px;
+    max-width: 100%;
+    overflow: hidden;
+    padding-top: 60px;
+    transition: padding-top .3s;
+}
+.u-lg-size1of4, .u-lg-size2of8, .u-lg-size3of12{
+  width: 25%!important;
+}
+.u-lg-size3of4, .u-lg-size6of8, .u-lg-size9of12{
+      width: 75%!important;
+}
+.ProfileCanopy-nav .ProfileNav{
+  margin-bottom: -1px;
+}
+.ProfileNav{
+      height: 60px;
+    position: relative;
+}
+ol, ul{
+      margin: 0;
+    list-style: none;
+    padding: 0;
+}
+.ProfileNav-item.is-active, .ProfileNav-item.is-active:hover{
+  border-color: #657786;
+    color: #657786;
+    cursor: default;
+}
+.ProfileNav-item{
+    display: inline-block;  
+}
+.ProfileNav-stat,  .ProfileNav-stat:hover, .ProfileNav-stat:focus{
+      border-bottom-width: 2px;
+      height: 60px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border-bottom: 0 solid;
+    display: block;
+    line-height: 1;
+    padding: 14px 15px 7px;
+    transition: all .15s ease-in-out;
+}
+.ProfileNav-item.is-active .ProfileNav-label, .ProfileNav-item.is-active:hover .ProfileNav-label{
+  color: #657786;
+}
+.ProfileNav-label{
+      color: #657786;
+    font-weight: bold;
+    font-size: 12px;
+    letter-spacing: .02em;
+    transition: color .15s ease-in-out;
+}
+.ProfileNav-label, .ProfileNav-value{
+      display: block;
+}
+.u-hiddenVisually{
+  border: 0!important;
+    clip: rect(1px,1px,1px,1px)!important;
+    font-size: 1px!important;
+    height: 1px!important;
+    overflow: hidden!important;
+    padding: 0!important;
+    position: absolute!important;
+    width: 1px!important;
+}
+.ProfileNav-item.is-active .ProfileNav-value, .ProfileNav-item.is-active:hover .ProfileNav-value{
+      color: inherit;
+}
+.ProfileNav-value{
+      color: #66757f;
+    font-size: 18px;
+    font-weight: bold;
+    padding-top: 3px;
+    transition: color .15s ease-in-out;
+}
+.content{
+    margin-left: 58px;
+    cursor: pointer;
+}
+.item-header{
+  display: flex;
+      cursor: pointer;
+}
+.account-group{
+  color: #14171a;
+    display: -moz-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -ms-flex-negative: 1;
+    flex-shrink: 1;
+    overflow: hidden;
+    margin-right: 5px;
+}
+.stream-item-header .avatar, .permalink-header .avatar{
+  float: left;
+    margin-top: 3px;
+    margin-left: -58px;
+    position: absolute;
+}
+.avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    -moz-force-broken-image-icon: 1;
+}
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }

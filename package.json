@@ -11,7 +11,8 @@
     "react-native-timeago": "^0.4.0",
     "react-scripts": "1.1.4",
     "react-time-ago": "^2.0.2",
-    "react-timeago": "^3.4.3"
+    "react-timeago": "^3.4.3",
+    "timeago.js": "^3.0.2"
   },
   "scripts": {
     "start": "react-scripts start",

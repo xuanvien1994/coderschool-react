@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+import avatar from './image/images.jpg'
 import TweetBox from './TweetBox';
 import Tweet from './Tweet';
 import TimeAgo from 'javascript-time-ago';
@@ -18,13 +19,15 @@ class App extends Component {
           id: 0,
           text: "Hello",
           liked: true,
-          timestamp: '02 02 2018'
+          image: '/image.jpg',
+          timestamp: '2018-04-12T03:56:25.729Z'
         },
         {
           id: 1,
           text: "World",
           liked: false,
-          timestamp: '01 01 2018'
+          image: '/image.jpg',
+          timestamp: '2018-04-12T03:52:25.729Z'
         }
       ]
     }
@@ -34,7 +37,8 @@ class App extends Component {
     let tweetObj = {
       id: id,
       text: tweetText,
-      liked: false
+      liked: false,
+      timestamp: Date.now()
     }
 
     this.setState({
@@ -45,8 +49,10 @@ class App extends Component {
     let tweets = this.state.tweets.map( (t) => {
       if (t.text === tweet.text && t.id === tweet.id) {
         return {
+          id: t.id,
           text: t.text,
-          liked: !t.liked
+          liked: !t.liked,
+          timestamp: t.timestamp
         } 
       }
       return t;
@@ -60,7 +66,7 @@ class App extends Component {
    handleDeleteTweet(tweet) {
     var tweets = this.state.tweets.filter(function(t)
     {
-        return t.id != tweet.id;
+        return t.id !==tweet.id;
     });
     this.setState({
       tweets
@@ -71,7 +77,8 @@ class App extends Component {
     var RepostTweet =[ {
         id: id,
         text: tweet.text,
-        liked: false}]
+        liked: false,
+        timestamp: Date.now()}]
     this.setState({
       tweets: this.state.tweets.concat(RepostTweet)
     });
@@ -84,6 +91,38 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
+        <div class="ProfileCanopy-header">
+          <div class="AppContainer">
+          <div class="ProfileCanopy-avatar">
+            <div class="ProfileAvatar">
+              <a class="ProfileAvatar-container">
+                <img class="ProfileAvatar-image" src={avatar} alt="AVATAR"/>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="ProfileCanopy-navBar">
+          <div class="AppContainer">
+            <div class="Grid Grid--withGutter">
+              <div class="Grid-cell u-lg-size1of4">
+                <div class="ProfileCanopy-card"></div>
+              </div>
+              <div class="Grid-cell u-lg-size3of4">
+                <div class="ProfileCanopy-nav">
+                  <div class="ProfileNav">
+                    <ul class="ProfileNav-list">
+                      <li class="ProfileNav-item.is-active, .ProfileNav-item.is-active:hover">
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        </div>
         <div>
           <TweetBox  class="input" type="text" prompt="What's your status?" onTweet={this.handleTweet.bind(this)}/>
         </div>  
